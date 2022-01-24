@@ -1,32 +1,53 @@
 import React from "react"
+import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-const TextImage = ({ data }) => {
-  const { title, tagline, text, pic, picPosition, link, linkText } = data
+const TextImage = ({ data, picPosition }) => {
+  const { title, tagline, text, slideshow, linkUrl, linkText } = data
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    arrows: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+  }
   return (
     <div className="section-container">
       <section id={title} className="section">
         {picPosition === "left" && (
-          <img
-            src={pic}
-            alt="cascabel"
-            className="desktop-section-pic left"
-          ></img>
+          <Slider {...settings} className="desktop-section-pic left">
+            {slideshow.map(pic => (
+              <GatsbyImage image={pic.gatsbyImageData} />
+            ))}
+          </Slider>
         )}
         <div className="section-details">
           <div>
             <h2 className="section-title">{title}</h2>
-            <img src={pic} alt="cascabel" className="mobile-section-pic"></img>
-            <p className="section-tagline">{tagline}</p>
-            <p className="section-text">{text}</p>
+            <Slider {...settings} className="mobile-section-pic">
+              {slideshow.map(pic => (
+                <GatsbyImage image={pic.gatsbyImageData} />
+              ))}
+            </Slider>
+            <p className="section-tagline">{tagline.tagline}</p>
+            <p className="section-text">{text.text}</p>
           </div>
-          {link && <a href={link} className="section-link">{linkText}</a>}
+          {linkUrl && (
+            <a href={linkUrl} className="section-link">
+              {linkText}
+            </a>
+          )}
         </div>
         {picPosition === "right" && (
-          <img
-            src={pic}
-            alt="cascabel"
-            className="desktop-section-pic right"
-          ></img>
+          <Slider {...settings} className="desktop-section-pic right">
+            {slideshow.map(pic => (
+              <GatsbyImage image={pic.gatsbyImageData} />
+            ))}
+          </Slider>
         )}
       </section>
     </div>

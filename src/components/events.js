@@ -1,19 +1,15 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import event1 from "../assets/Event1.png"
-import event2 from "../assets/Event2.png"
-import event3 from "../assets/Event3.png"
 
 function SampleNextArrow(props) {
   const { onClick } = props
   return (
     <div className="event-next" onClick={onClick}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 35.617 72.699"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.617 72.699">
         <g
           id="Group_61"
           data-name="Group 61"
@@ -49,10 +45,7 @@ function SamplePrevArrow(props) {
   const { onClick } = props
   return (
     <div className="event-prev" onClick={onClick}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 35.617 72.699"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.617 72.699">
         <g
           id="Group_62"
           data-name="Group 62"
@@ -85,6 +78,19 @@ function SamplePrevArrow(props) {
 }
 
 const Events = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allContentfulEvents {
+        nodes {
+          eventDates
+          eventImage {
+            gatsbyImageData
+          }
+          eventLink
+        }
+      }
+    }
+  `)
   const settings = {
     dots: false,
     infinite: true,
@@ -108,34 +114,21 @@ const Events = () => {
   return (
     <div>
       <Slider {...settings}>
-        <div className="event-slide">
-          <img src={event1} alt="event 1" className="event-pic"></img>
-          <p className="event-date">October 2nd - 12pm</p>
-          <a href="#" className="event-link">
-            Sign up for tickets <span>+</span>
-          </a>
-        </div>
-        <div className="event-slide">
-          <img src={event2} alt="event 2" className="event-pic"></img>
-          <p className="event-date">January 23rd - 5pm</p>
-          <a href="#" className="event-link">
-            Sign up for tickets <span>+</span>
-          </a>
-        </div>
-        <div className="event-slide">
-          <img src={event3} alt="event 3" className="event-pic"></img>
-          <p className="event-date">December 13th - 7pm</p>
-          <a href="#" className="event-link">
-            Sign up for tickets <span>+</span>
-          </a>
-        </div>
-        <div className="event-slide">
-          <img src={event2} alt="event 2" className="event-pic"></img>
-          <p className="event-date">October 2nd - 12pm</p>
-          <a href="#" className="event-link">
-            Sign up for tickets <span>+</span>
-          </a>
-        </div>
+        {data.allContentfulEvents.nodes.map(event => {
+          return (
+            <div className="event-slide">
+              <GatsbyImage
+                image={event.eventImage.gatsbyImageData}
+                alt="fill this in"
+                className="event-pic"
+              />
+              <p className="event-date">{event.eventDates}</p>
+              <a href={event.eventLink} className="event-link">
+                Sign up for tickets <span>+</span>
+              </a>
+            </div>
+          )
+        })}
       </Slider>
     </div>
   )

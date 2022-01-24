@@ -237,6 +237,11 @@ main {
   margin-bottom: 1rem;
 }
 
+.about-video {
+  width: 100vw;
+  margin-left: -1rem;
+}
+
 .desktop-nav {
   display: none;
 }
@@ -261,13 +266,27 @@ main {
   font-size: 3rem;
 }
 
+.slick-dots li button::before {
+  font-size: 16px;
+  color: #fff !important;
+  opacity: 0.7;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #fff !important;
+}
+
 .mobile-section-pic {
   width: 100vw;
   margin-left: -1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
-.desktop-section-pic, .desktop-only {
+.desktop-section-pic {
+  display: none !important;
+}
+
+.desktop-only {
   display: none;
 }
 
@@ -417,10 +436,6 @@ main {
     margin-top: -1rem;
   }
 
-  .down-arrow {
-    display: none;
-  }
-
   .weather {
     width: 225px;
     margin-top: 1rem;
@@ -432,7 +447,7 @@ main {
 
   .about-text {
     font-size: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   .desktop-nav {
@@ -488,11 +503,11 @@ main {
   }
 
   .mobile-section-pic {
-    display: none;
+    display: none !important;
   }
 
   .desktop-section-pic {
-    display: block;
+    display: block !important;
     width: 45%;
   }
 

@@ -25,7 +25,6 @@ const Weather = () => {
         `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
       )
       const data = await response.json()
-      console.log(data)
       setWeatherData(data)
       setLoading(false)
     }

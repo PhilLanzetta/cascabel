@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from "gatsby"
 import "react-h5-audio-player/lib/styles.css"
 import "../styles/main.css"
 import Weather from "../components/weather"
@@ -7,13 +8,13 @@ import Seo from "../components/seo"
 import logo from "../assets/cascabel_logo.svg"
 import artPic from "../assets/artPic.png"
 import musicPic from "../assets/musicPic.png"
-import video from "../assets/Video.png"
 import AudioPlayer from "react-h5-audio-player"
 import Events from "../components/events"
 import TextImage from "../components/textImage"
 import Residents from '../components/residents'
+import About from "../components/about"
 
-export default function Home() {
+export default function Home({data}) {
   const artObject = {
     title: "Art",
     tagline: "An open air gallery space and residencies",
@@ -57,6 +58,7 @@ export default function Home() {
     pic: artPic,
     picPosition: "right",
   }
+
   return (
     <>
       <Seo title="Home" />
@@ -107,40 +109,48 @@ export default function Home() {
             </div>
           </article>
         </section>
-        <section className="about">
-          <p className="about-header">
-            A home for creative freedom, community &amp; collaboration
-          </p>
-          <p className="about-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sinLorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate
-          </p>
-        </section>
-        <img src={video} alt="video thumbnail"></img>
+        <About />
         <nav className="desktop-nav">
-          <a href="#art">Art</a>
-          <a href="#events">Events</a>
-          <a href="#music">Music</a>
-          <a href="#wellness">Wellness</a>
-          <a href="#community">Community</a>
+          <a href="#Art">Art</a>
+          <a href="#Events">Events</a>
+          <a href="#Music">Music</a>
+          <a href="#Wellness">Wellness</a>
+          <a href="#Community">Community</a>
         </nav>
-        <TextImage data={artObject} />
-        <section id="events" className="section-container events-section">
+        <TextImage
+          data={data.allContentfulSection.nodes.find(
+            ({ title }) => title === "Art"
+          )}
+          picPosition="right"
+        />
+        <section id="Events" className="section-container events-section">
           <h2 className="section-title">Events</h2>
           <Events />
         </section>
-        <TextImage data={musicObject} />
-        <TextImage data={residencyObj} />
-        <TextImage data={wellnessObj} />
-        <TextImage data={communObj} />
+        <TextImage
+          data={data.allContentfulSection.nodes.find(
+            ({ title }) => title === "Music"
+          )}
+          picPosition="left"
+        />
+        <TextImage
+          data={data.allContentfulSection.nodes.find(
+            ({ title }) => title === "Residencies"
+          )}
+          picPosition="right"
+        />
+        <TextImage
+          data={data.allContentfulSection.nodes.find(
+            ({ title }) => title === "Wellness"
+          )}
+          picPosition="left"
+        />
+        <TextImage
+          data={data.allContentfulSection.nodes.find(
+            ({ title }) => title === "Community"
+          )}
+          picPosition="right"
+        />
         <Residents />
         <section className="visit-us-container">
           <div className="visit-us">
@@ -253,3 +263,25 @@ export default function Home() {
     </>
   )
 }
+
+export const query = graphql`
+  {
+    allContentfulSection {
+      nodes {
+        id
+        title
+        tagline {
+          tagline
+        }
+        text {
+          text
+        }
+        slideshow {
+          gatsbyImageData
+        }
+        linkUrl
+        linkText
+      }
+    }
+  }
+`
