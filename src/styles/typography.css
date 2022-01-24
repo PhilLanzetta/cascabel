@@ -3,3 +3,21 @@
   src: url("../fonts/Sohne-Leicht.woff");
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Editorial New";
+  src: url("../fonts/EditorialNew-Regular.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Antique";
+  src: url("../fonts/AntiqueLegacy-Regular.otf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Antique Light";
+  src: url("../fonts/AntiqueLegacy-Light.otf");
+  font-display: swap;
+}
