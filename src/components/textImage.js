@@ -3,12 +3,14 @@ import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { GatsbyImage } from "gatsby-plugin-image"
+import Fade from "react-reveal/Fade"
 
 const TextImage = ({ data, picPosition }) => {
-  const { title, tagline, text, slideshow, linkUrl, linkText } = data
+  const { title, tagline, text, slideshow, linkedPdf, linkText } = data
   const settings = {
     dots: true,
     infinite: true,
+    fade: true,
     speed: 500,
     arrows: false,
     slidesToShow: 1,
@@ -27,19 +29,29 @@ const TextImage = ({ data, picPosition }) => {
         )}
         <div className="section-details">
           <div>
-            <h2 className="section-title">{title}</h2>
-            <Slider {...settings} className="mobile-section-pic">
-              {slideshow.map(pic => (
-                <GatsbyImage image={pic.gatsbyImageData} />
-              ))}
-            </Slider>
-            <p className="section-tagline">{tagline.tagline}</p>
-            <p className="section-text">{text.text}</p>
+            <Fade>
+              <h2 className="section-title">{title}</h2>
+            </Fade>
+            <Fade>
+              <Slider {...settings} className="mobile-section-pic">
+                {slideshow.map(pic => (
+                  <GatsbyImage image={pic.gatsbyImageData} />
+                ))}
+              </Slider>
+            </Fade>
+            <Fade>
+              <p className="section-tagline">{tagline.tagline}</p>
+            </Fade>
+            <Fade>
+              <p className="section-text">{text.text}</p>
+            </Fade>
           </div>
-          {linkUrl && (
-            <a href={linkUrl} className="section-link">
-              {linkText}
-            </a>
+          {linkedPdf && (
+            <Fade>
+              <a href={linkedPdf.file.url} className="section-link">
+                {linkText}
+              </a>
+            </Fade>
           )}
         </div>
         {picPosition === "right" && (

@@ -227,7 +227,12 @@ main {
 
 .about {
   margin: 1rem;
+  margin-bottom: 0;
   font-family: "Editorial New", serif;
+}
+
+.about-text {
+  margin-bottom: 1rem;
 }
 
 .about-header {
@@ -240,6 +245,18 @@ main {
 .about-video {
   width: 100vw;
   margin-left: -1rem;
+}
+
+.mobile-marquee {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  padding: 1rem 0;
+}
+
+.mobile-marquee p {
+  text-transform: uppercase;
+  margin-right: 3rem;
+  font-size: 3rem;
 }
 
 .desktop-nav {
@@ -441,6 +458,10 @@ main {
     margin-top: 1rem;
   }
 
+  .about {
+    margin-bottom: 1rem;
+  }
+
   .about-header {
     font-size: 6rem;
   }
@@ -506,9 +527,22 @@ main {
     display: none !important;
   }
 
+  .mobile-marquee-container {
+    display: none !important;
+  }
+
   .desktop-section-pic {
     display: block !important;
     width: 45%;
+  }
+
+  .desktop-section-pic > .slick-list {
+    margin: 0 !important;
+  }
+
+  .desktop-section-pic img {
+    width: 100%;
+    height: auto;
   }
 
   .right {

@@ -1,57 +1,41 @@
 import React from "react"
-
-
-const data = [
-  {
-   id: 1,
-    artist: "Colu Diaz",
-    dates: "Nov 23rd - 30th ",
-    project: "Project Name",
-    desc: "Lorem Ipsum",
-  },
-  {
-   id: 2,
-    artist: "Colu Diaz",
-    dates: "Nov 23rd - 30th ",
-    project: "Project Name",
-    desc: "Lorem Ipsum",
-  },
-  {
-   id: 3,
-    artist: "Colu Diaz",
-    dates: "Nov 23rd - 30th ",
-    project: "Project Name",
-    desc: "Lorem Ipsum",
-  },
-  {
-   id: 4,
-    artist: "Colu Diaz",
-    dates: "Nov 23rd - 30th ",
-    project: "Project Name",
-    desc: "Lorem Ipsum",
-  },
-  {
-   id: 5,
-    artist: "Colu Diaz",
-    dates: "Nov 23rd - 30th ",
-    project: "Project Name",
-    desc: "Lorem Ipsum",
-  },
-]
+import { useStaticQuery, graphql } from "gatsby"
+import Fade from 'react-reveal/Fade'
 
 const Residents = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allContentfulResidents {
+        nodes {
+          name
+          id
+          dates
+          description {
+            description
+          }
+          projectName
+        }
+      }
+    }
+  `)
   return (
     <section className="residents-section">
-      <h2 className="section-title resident-title">Residents</h2>
-      {data.map((event => {
-       const {id, artist, dates, project, desc} = event
-       return <div key={id} className="resident-row">
-        <p>{artist}</p>
-        <p>{dates}</p>
-        <p className="desktop-only">{project}</p>
-        <p className="desktop-only">{desc}</p>
-       </div>
-      }))}
+      <Fade>
+        <h2 className="section-title resident-title">Residents</h2>
+      </Fade>
+      {data.allContentfulResidents.nodes.map(event => {
+        const { id, name, dates, projectName, description } = event
+        return (
+          <Fade>
+            <div key={id} className="resident-row">
+              <p>{name}</p>
+              <p>{dates}</p>
+              <p className="desktop-only">{projectName}</p>
+              <p className="desktop-only">{description.description}</p>
+            </div>
+          </Fade>
+        )
+      })}
     </section>
   )
 }
