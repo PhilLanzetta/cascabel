@@ -33,13 +33,11 @@ const TextImage = ({ data, picPosition }) => {
             <Fade>
               <h2 className="section-title">{title}</h2>
             </Fade>
-            <Fade>
               <Slider {...settings} className="mobile-section-pic">
                 {slideshow.map(pic => (
                   <GatsbyImage image={pic.gatsbyImageData} />
                 ))}
               </Slider>
-            </Fade>
             <Fade>
               <p className="section-tagline">{tagline.tagline}</p>
             </Fade>
