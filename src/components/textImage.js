@@ -13,6 +13,7 @@ const TextImage = ({ data, picPosition }) => {
     fade: true,
     speed: 500,
     arrows: false,
+    swipeToSlide: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -47,11 +48,9 @@ const TextImage = ({ data, picPosition }) => {
             </Fade>
           </div>
           {linkedPdf && (
-            <Fade>
-              <a href={linkedPdf.file.url} className="section-link">
-                {linkText}
-              </a>
-            </Fade>
+            <a href={linkedPdf.file.url} className="section-link">
+              {linkText}
+            </a>
           )}
         </div>
         {picPosition === "right" && (

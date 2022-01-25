@@ -4,7 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import Fade from 'react-reveal/Fade'
+import Fade from "react-reveal/Fade"
 
 function SampleNextArrow(props) {
   const { onClick } = props
@@ -117,27 +117,25 @@ const Events = () => {
       <Fade>
         <h2 className="section-title">Events</h2>
       </Fade>
-      <Fade>
-        <div>
-          <Slider {...settings}>
-            {data.allContentfulEvents.nodes.map(event => {
-              return (
-                <div className="event-slide">
-                  <GatsbyImage
-                    image={event.eventImage.gatsbyImageData}
-                    alt="fill this in"
-                    className="event-pic"
-                  />
-                  <p className="event-date">{event.eventDates}</p>
-                  <a href={event.eventLink} className="event-link">
-                    Sign up for tickets <span>+</span>
-                  </a>
-                </div>
-              )
-            })}
-          </Slider>
-        </div>
-      </Fade>
+      <div>
+        <Slider {...settings}>
+          {data.allContentfulEvents.nodes.map(event => {
+            return (
+              <div className="event-slide">
+                <GatsbyImage
+                  image={event.eventImage.gatsbyImageData}
+                  alt="fill this in"
+                  className="event-pic"
+                />
+                <p className="event-date">{event.eventDates}</p>
+                <a href={event.eventLink} className="event-link">
+                  Sign up for tickets <span>+</span>
+                </a>
+              </div>
+            )
+          })}
+        </Slider>
+      </div>
     </section>
   )
 }
