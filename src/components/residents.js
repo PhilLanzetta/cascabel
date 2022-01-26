@@ -1,6 +1,5 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Fade from 'react-reveal/Fade'
 
 const Residents = () => {
   const data = useStaticQuery(graphql`
@@ -21,14 +20,11 @@ const Residents = () => {
   `)
   return (
     <section className="residents-section">
-      <Fade>
         <h2 className="section-title resident-title">Residents</h2>
-      </Fade>
       {data.allContentfulResidents.nodes.map(event => {
         const { id, name, dates, projectName, description, artistUrl } = event
         return (
-          <Fade key={id}>
-            <a href={artistUrl}>
+            <a key={id} href={artistUrl}>
               <div className="resident-row">
                 <p>{name}</p>
                 <p>{dates}</p>
@@ -37,7 +33,6 @@ const Residents = () => {
                 <p className="resident-arrow">→</p>
               </div>
             </a>
-          </Fade>
         )
       })}
     </section>
