@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import Fade from "react-reveal/Fade"
 import Marquee from "react-fast-marquee"
 
 const About = () => {
@@ -21,8 +22,13 @@ const About = () => {
   `)
   return (
     <section className="about">
+      <Fade>
         <p className="about-header">{data.contentfulAbout.heading}</p>
+      </Fade>
+      <Fade>
         <p className="about-text">{data.contentfulAbout.text.text}</p>
+      </Fade>
+      <Fade>
         <div className="mobile-marquee-container">
           <Marquee className="mobile-marquee" gradient={false}>
             <p>Art</p>
@@ -33,6 +39,8 @@ const About = () => {
             <p>Community</p>
           </Marquee>
         </div>
+      </Fade>
+      <Fade>
         <video
           autoPlay
           loop
@@ -44,6 +52,7 @@ const About = () => {
           className="about-video"
           onClick={() => (setControls(true))}
         ></video>
+      </Fade>
     </section>
   )
 }

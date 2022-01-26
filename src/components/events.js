@@ -4,6 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import Fade from "react-reveal/Fade"
 
 function SampleNextArrow(props) {
   const { onClick } = props
@@ -114,7 +115,9 @@ const Events = () => {
   }
   return (
     <section id="Events" className="section-container events-section">
+      <Fade>
         <h2 className="section-title">Events</h2>
+      </Fade>
       <div>
         <Slider {...settings}>
           {data.allContentfulEvents.nodes.map(event => {
