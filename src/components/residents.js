@@ -14,6 +14,7 @@ const Residents = () => {
             description
           }
           projectName
+          artistUrl
         }
       }
     }
@@ -24,15 +25,18 @@ const Residents = () => {
         <h2 className="section-title resident-title">Residents</h2>
       </Fade>
       {data.allContentfulResidents.nodes.map(event => {
-        const { id, name, dates, projectName, description } = event
+        const { id, name, dates, projectName, description, artistUrl } = event
         return (
-          <Fade>
-            <div key={id} className="resident-row">
-              <p>{name}</p>
-              <p>{dates}</p>
-              <p className="desktop-only">{projectName}</p>
-              <p className="desktop-only">{description.description}</p>
-            </div>
+          <Fade key={id}>
+            <a href={artistUrl}>
+              <div className="resident-row">
+                <p>{name}</p>
+                <p>{dates}</p>
+                <p className="desktop-only">{projectName}</p>
+                <p className="desktop-only">{description.description}</p>
+                <p className="resident-arrow">→</p>
+              </div>
+            </a>
           </Fade>
         )
       })}

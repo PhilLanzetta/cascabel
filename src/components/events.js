@@ -104,8 +104,9 @@ const Events = () => {
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 1.5,
+          slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: true,
           arrows: false,
           infinite: false,
         },

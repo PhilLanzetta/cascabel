@@ -94,7 +94,8 @@ input[type="submit"] {
   z-index: -10;
 }
 
-.video {
+.video,
+.overlay-blur {
   position: absolute;
   top: 0;
   left: 0;
@@ -103,6 +104,18 @@ input[type="submit"] {
   margin: auto;
   min-width: 50%;
   min-height: 50%;
+}
+
+.overlay-blur {
+  opacity: 0;
+  backdrop-filter: blur(20px);
+  z-index: 10;
+  transition: all 700ms;
+}
+
+.show {
+  opacity: 1;
+  transition: all 2s;
 }
 
 main {
@@ -248,12 +261,15 @@ main {
 }
 
 .mobile-marquee {
+  margin-left: -1rem;
+  width: 100vw;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
   padding: 1rem 0;
 }
 
 .mobile-marquee p {
+  font-family: "Antique", sans-serif;
   text-transform: uppercase;
   margin-right: 3rem;
   font-size: 3rem;
@@ -290,13 +306,18 @@ main {
 }
 
 .slick-dots li.slick-active button:before {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .mobile-section-pic {
   width: 100vw;
   margin-left: -1rem;
   margin-bottom: 2rem;
+}
+
+.mobile-section-pic img {
+  min-width: 100%;
+  aspect-ratio: 582 / 461;
 }
 
 .desktop-section-pic {
@@ -314,7 +335,8 @@ main {
 }
 
 .event-pic {
-  width: 100%;
+  min-height: 100%;
+  aspect-ratio: 579 / 724;
 }
 
 .event-date {
@@ -417,11 +439,19 @@ main {
 }
 
 .resident-row {
+  position: relative;
   display: grid;
   grid-template-columns: 2fr 1fr;
   font-size: 0.75rem;
   padding: 1rem 0.5rem;
   border-bottom: 1px solid #fff;
+}
+
+.resident-arrow {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .visit-us-container {
@@ -541,8 +571,8 @@ main {
   }
 
   .desktop-section-pic img {
-    width: 100%;
-    height: auto;
+    min-width: 100%;
+    aspect-ratio: 582 / 461;
   }
 
   .right {
@@ -574,17 +604,17 @@ main {
 
   .visit-us {
     flex-direction: row;
+    width: 100%;
     align-items: flex-end;
-    margin: 0 0.5rem;
+    justify-content: flex-start;
+    margin: 0 1rem;
   }
 
   .visit-us p {
-    height: 4rem;
-    display: flex;
-    align-items: flex-end;
+    margin-left: auto;
   }
 
   .visit-us h2 {
-    margin: 0 2rem;
+    margin: 0 1rem;
   }
 }
