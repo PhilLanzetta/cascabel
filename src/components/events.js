@@ -108,7 +108,6 @@ const Events = () => {
           slidesToScroll: 1,
           centerMode: true,
           arrows: false,
-          infinite: false,
         },
       },
     ],
