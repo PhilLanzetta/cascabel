@@ -9,7 +9,14 @@ import Fade from "react-reveal/Fade"
 function SampleNextArrow(props) {
   const { onClick } = props
   return (
-    <div className="event-next" onClick={onClick}>
+    <div
+      className="event-next"
+      onClick={onClick}
+      onKeyDown={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label="go to next"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.617 72.699">
         <g
           id="Group_61"
@@ -45,7 +52,14 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { onClick } = props
   return (
-    <div className="event-prev" onClick={onClick}>
+    <div
+      className="event-prev"
+      onClick={onClick}
+      onKeyDown={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label="go to previous"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.617 72.699">
         <g
           id="Group_62"
@@ -83,9 +97,11 @@ const Events = () => {
     {
       allContentfulEvents {
         nodes {
+          id
           eventDates
           eventImage {
             gatsbyImageData
+            description
           }
           eventLink
         }
@@ -108,6 +124,7 @@ const Events = () => {
           slidesToScroll: 1,
           centerMode: true,
           arrows: false,
+          infinite: false,
         },
       },
     ],
@@ -121,10 +138,10 @@ const Events = () => {
         <Slider {...settings}>
           {data.allContentfulEvents.nodes.map(event => {
             return (
-              <div className="event-slide">
+              <div key={event.id} className="event-slide">
                 <GatsbyImage
                   image={event.eventImage.gatsbyImageData}
-                  alt="fill this in"
+                  alt={event.eventImage.description}
                   className="event-pic"
                 />
                 <p className="event-date">{event.eventDates}</p>

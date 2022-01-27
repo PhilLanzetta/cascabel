@@ -277,6 +277,8 @@ export const query = graphql`
         }
         slideshow {
           gatsbyImageData
+          id
+          description
         }
         linkedPdf {
           file {

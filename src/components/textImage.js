@@ -24,7 +24,11 @@ const TextImage = ({ data, picPosition }) => {
         {picPosition === "left" && (
           <Slider {...settings} className="desktop-section-pic left">
             {slideshow.map(pic => (
-              <GatsbyImage image={pic.gatsbyImageData} />
+              <GatsbyImage
+                key={pic.id}
+                image={pic.gatsbyImageData}
+                alt={pic.description}
+              />
             ))}
           </Slider>
         )}
@@ -33,11 +37,15 @@ const TextImage = ({ data, picPosition }) => {
             <Fade>
               <h2 className="section-title">{title}</h2>
             </Fade>
-              <Slider {...settings} className="mobile-section-pic">
-                {slideshow.map(pic => (
-                  <GatsbyImage image={pic.gatsbyImageData} />
-                ))}
-              </Slider>
+            <Slider {...settings} className="mobile-section-pic">
+              {slideshow.map(pic => (
+                <GatsbyImage
+                  key={pic.id}
+                  image={pic.gatsbyImageData}
+                  alt={pic.description}
+                />
+              ))}
+            </Slider>
             <Fade>
               <p className="section-tagline">{tagline.tagline}</p>
             </Fade>
@@ -54,7 +62,11 @@ const TextImage = ({ data, picPosition }) => {
         {picPosition === "right" && (
           <Slider {...settings} className="desktop-section-pic right">
             {slideshow.map(pic => (
-              <GatsbyImage image={pic.gatsbyImageData} />
+              <GatsbyImage
+                key={pic.id}
+                image={pic.gatsbyImageData}
+                alt={pic.description}
+              />
             ))}
           </Slider>
         )}
