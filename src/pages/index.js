@@ -81,14 +81,22 @@ export default function Home({ data }) {
               <div className="at-cascabel">
                 <div className="language-button-container">
                   <button
-                    className="language-button"
+                    className={
+                      language === "es"
+                        ? "language-button underline"
+                        : "language-button"
+                    }
                     onClick={() => setLanguage("es")}
                   >
                     ES
                   </button>{" "}
                   |{" "}
                   <button
-                    className="language-button"
+                    className={
+                      language === "en"
+                        ? "language-button underline"
+                        : "language-button"
+                    }
                     onClick={() => setLanguage("en")}
                   >
                     EN

@@ -95,7 +95,10 @@ function SamplePrevArrow(props) {
 const EventsES = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulEvents(filter: { node_locale: { eq: "es-MX" } }) {
+      allContentfulEvents(
+        filter: { node_locale: { eq: "es-MX" } }
+        sort: { fields: orderNumber }
+      ) {
         nodes {
           id
           eventDates

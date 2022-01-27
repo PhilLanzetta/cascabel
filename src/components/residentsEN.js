@@ -1,11 +1,14 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Fade from 'react-reveal/Fade'
+import Fade from "react-reveal/Fade"
 
 const ResidentsEN = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulResidents(filter: { node_locale: { eq: "es-MX" } }) {
+      allContentfulResidents(
+        filter: { node_locale: { eq: "en-US" } }
+        sort: { fields: orderNumber }
+      ) {
         nodes {
           name
           id
@@ -33,7 +36,9 @@ const ResidentsEN = () => {
                 <p>{name}</p>
                 <p>{dates}</p>
                 <p className="desktop-only">{projectName}</p>
-                <p className="desktop-only">{description.description}</p>
+                <p className="desktop-only">
+                  {description ? description.description : ""}
+                </p>
                 <p className="resident-arrow">→</p>
               </div>
             </a>

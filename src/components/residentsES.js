@@ -5,7 +5,10 @@ import Fade from "react-reveal/Fade"
 const ResidentsES = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulResidents(filter: { node_locale: { eq: "es-MX" } }) {
+      allContentfulResidents(
+        filter: { node_locale: { eq: "es-MX" } }
+        sort: { fields: orderNumber }
+      ) {
         nodes {
           name
           id
@@ -33,7 +36,9 @@ const ResidentsES = () => {
                 <p>{name}</p>
                 <p>{dates}</p>
                 <p className="desktop-only">{projectName}</p>
-                <p className="desktop-only">{description.description}</p>
+                <p className="desktop-only">
+                  {description ? description.description : ""}
+                </p>
                 <p className="resident-arrow">→</p>
               </div>
             </a>
