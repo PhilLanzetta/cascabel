@@ -8,7 +8,6 @@ import Fade from "react-reveal/Fade"
 const TextImage = ({ data, picPosition }) => {
   const { title, tagline, text, slideshow, linkedPdf, linkText } = data
   const settings = {
-    dots: true,
     infinite: true,
     fade: true,
     speed: 500,
