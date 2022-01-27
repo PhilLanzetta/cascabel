@@ -2,10 +2,10 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Fade from 'react-reveal/Fade'
 
-const Residents = () => {
+const ResidentsEN = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulResidents {
+      allContentfulResidents(filter: { node_locale: { eq: "es-MX" } }) {
         nodes {
           name
           id
@@ -44,4 +44,4 @@ const Residents = () => {
   )
 }
 
-export default Residents
+export default ResidentsEN

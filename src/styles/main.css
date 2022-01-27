@@ -17,9 +17,10 @@ a {
   transition: all 400ms;
 }
 
-a:hover {
+a:hover, button:hover {
   opacity: 0.85;
   transition: all 400ms;
+  cursor: pointer;
 }
 
 .border-top {
@@ -133,7 +134,19 @@ main {
 .at-cascabel {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+
+.language-button-container {
+  margin-left: 1rem;
+}
+
+.language-button {
+  font-family: "Antique", sans-serif;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  color: #fff;
 }
 
 .at-cascabel a {
@@ -476,6 +489,16 @@ main {
 @media (min-width: 992px) {
   html {
     font-size: 24px;
+  }
+
+  .at-cascabel {
+    justify-content: flex-end
+  }
+
+  .language-button-container {
+    position: absolute;
+    top: 1rem;
+    right: 6rem;
   }
 
   .dynamic-content {

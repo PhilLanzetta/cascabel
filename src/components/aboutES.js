@@ -3,11 +3,13 @@ import { useStaticQuery, graphql } from "gatsby"
 import Fade from "react-reveal/Fade"
 import Marquee from "react-fast-marquee"
 
-const About = () => {
-  const [controls, setControls] = useState(false);
+const AboutES = () => {
+  const [controls, setControls] = useState(false)
   const data = useStaticQuery(graphql`
     {
-      contentfulAbout {
+      allContentfulAbout(filter: { node_locale: { eq: "es-MX" } })
+      {
+      nodes {
         heading
         text {
           text
@@ -18,25 +20,31 @@ const About = () => {
           }
         }
       }
+     }
     }
   `)
+
   return (
     <section className="about">
       <Fade>
-        <p className="about-header">{data.contentfulAbout.heading}</p>
+        <p className="about-header">
+          {data.allContentfulAbout.nodes[0].heading}
+        </p>
       </Fade>
       <Fade>
-        <p className="about-text">{data.contentfulAbout.text.text}</p>
+        <p className="about-text">
+          {data.allContentfulAbout.nodes[0].text.text}
+        </p>
       </Fade>
       <Fade>
         <div className="mobile-marquee-container">
           <Marquee className="mobile-marquee" gradient={false}>
-            <p>Art</p>
-            <p>Events</p>
-            <p>Music</p>
-            <p>Residencies</p>
-            <p>Wellness</p>
-            <p>Community</p>
+            <p>Arte</p>
+            <p>Eventos</p>
+            <p>Música</p>
+            <p>Residencias</p>
+            <p>Bienestar</p>
+            <p>Comunidad</p>
           </Marquee>
         </div>
       </Fade>
@@ -47,14 +55,14 @@ const About = () => {
           muted
           playsInline
           controls={controls}
-          src={data.contentfulAbout.video.file.url}
+          src={data.allContentfulAbout.nodes[0].video.file.url}
           alt="video"
           className="about-video"
-          onClick={() => (setControls(true))}
+          onClick={() => setControls(true)}
         ></video>
       </Fade>
     </section>
   )
 }
 
-export default About
+export default AboutES

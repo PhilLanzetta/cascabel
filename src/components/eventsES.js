@@ -92,10 +92,10 @@ function SamplePrevArrow(props) {
   )
 }
 
-const Events = () => {
+const EventsES = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulEvents {
+      allContentfulEvents(filter: { node_locale: { eq: "es-MX" } }) {
         nodes {
           id
           eventDates
@@ -130,9 +130,9 @@ const Events = () => {
     ],
   }
   return (
-    <section id="Events" className="section-container events-section">
+    <section id="Eventos" className="section-container events-section">
       <Fade>
-        <h2 className="section-title">Events</h2>
+        <h2 className="section-title">Eventos</h2>
       </Fade>
       <div>
         <Slider {...settings}>
@@ -146,7 +146,7 @@ const Events = () => {
                 />
                 <p className="event-date">{event.eventDates}</p>
                 <a href={event.eventLink} className="event-link">
-                  Sign up for tickets <span>+</span>
+                  Registrarse para boletos <span>+</span>
                 </a>
               </div>
             )
@@ -157,4 +157,4 @@ const Events = () => {
   )
 }
 
-export default Events
+export default EventsES
