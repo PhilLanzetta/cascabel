@@ -13,6 +13,7 @@ const TextImage = ({ data, picPosition }) => {
     speed: 500,
     arrows: false,
     swipeToSlide: true,
+    pauseOnHover: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
