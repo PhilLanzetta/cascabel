@@ -393,16 +393,23 @@ main {
   height: auto;
   transform: translate(0, -50%);
   transition: all 400ms;
+  z-index: 80;
 }
 
-.event-prev,
-.slideshow-prev {
+.event-prev {
   left: 0;
 }
 
-.event-next,
-.slideshow-next {
+.slideshow-prev {
+  left: 10px;
+}
+
+.event-next {
   right: 0;
+}
+
+.slideshow-next {
+  right: 10px;
 }
 
 .slideshow-next:hover,
@@ -616,7 +623,6 @@ main {
   .desktop-section-pic {
     display: block !important;
     width: 45%;
-    padding: 0.5rem;
   }
 
   .desktop-section-pic > .slick-list {

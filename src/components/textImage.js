@@ -108,6 +108,7 @@ const TextImage = ({ data, picPosition }) => {
     infinite: true,
     fade: true,
     speed: 500,
+    autoplay: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     slidesToShow: 1,
