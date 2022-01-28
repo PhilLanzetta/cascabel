@@ -54,7 +54,12 @@ const TextImage = ({ data, picPosition }) => {
             </Fade>
           </div>
           {linkedPdf && (
-            <a href={linkedPdf.file.url} className="section-link">
+            <a
+              href={linkedPdf.file.url}
+              className="section-link"
+              target="_blank"
+              rel="noreferrer"
+            >
               {linkText}
             </a>
           )}

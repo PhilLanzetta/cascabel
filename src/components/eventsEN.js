@@ -148,9 +148,16 @@ const EventsEN = () => {
                   className="event-pic"
                 />
                 <p className="event-date">{event.eventDates}</p>
-                <a href={event.eventLink} className="event-link">
-                  Sign up for tickets <span>+</span>
-                </a>
+                {event.eventLink && (
+                  <a
+                    href={event.eventLink}
+                    className="event-link"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Sign up for tickets <span>+</span>
+                  </a>
+                )}
               </div>
             )
           })}

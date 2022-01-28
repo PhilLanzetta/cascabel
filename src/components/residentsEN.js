@@ -31,7 +31,7 @@ const ResidentsEN = () => {
         const { id, name, dates, projectName, description, artistUrl } = event
         return (
           <Fade key={id}>
-            <a href={artistUrl}>
+            <a href={artistUrl} target="_blank" rel="noreferrer">
               <div className="resident-row">
                 <p>{name}</p>
                 <p>{dates}</p>
