@@ -385,12 +385,31 @@ main {
   transition: all 400ms;
 }
 
-.event-prev {
+.slideshow-prev,
+.slideshow-next {
+  width: 12px;
+  position: absolute;
+  top: 50%;
+  height: auto;
+  transform: translate(0, -50%);
+  transition: all 400ms;
+}
+
+.event-prev,
+.slideshow-prev {
   left: 0;
 }
 
-.event-next {
+.event-next,
+.slideshow-next {
   right: 0;
+}
+
+.slideshow-next:hover,
+.slideshow-prev:hover {
+  cursor: pointer;
+  width: 14px;
+  transition: all 400ms;
 }
 
 .event-prev:hover,
@@ -597,6 +616,7 @@ main {
   .desktop-section-pic {
     display: block !important;
     width: 45%;
+    padding: 0.5rem;
   }
 
   .desktop-section-pic > .slick-list {
