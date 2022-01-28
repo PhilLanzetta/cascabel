@@ -25,7 +25,7 @@ const ResidentsES = () => {
   return (
     <section className="residents-section">
       <Fade>
-        <h2 className="section-title resident-title">Residents</h2>
+        <h2 className="section-title resident-title">Residentes</h2>
       </Fade>
       {data.allContentfulResidents.nodes.map(event => {
         const { id, name, dates, projectName, description, artistUrl } = event
