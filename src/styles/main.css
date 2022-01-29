@@ -248,7 +248,7 @@ main {
 }
 
 .track-details {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
 }
 
 .down-arrow {
@@ -401,7 +401,7 @@ main {
 }
 
 .slideshow-prev {
-  left: 10px;
+  left: 18px;
 }
 
 .event-next {
@@ -409,7 +409,7 @@ main {
 }
 
 .slideshow-next {
-  right: 10px;
+  right: 18px;
 }
 
 .slideshow-next:hover,
@@ -650,7 +650,7 @@ main {
   }
 
   .section-text {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
   }
 
   .slick-list {
